@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    environment {
+        PATH = "C:/Program Files/Apache maven-3.8.2/bin: $PATH"
+    }
+    stages{
+       // stage('GetCode')
+            // steps{
+               // git 'https://github.com/Spraveensakthi/DevOps.git'   
+    
+       stage('Build'){
+            steps{
+                bat 'mvn clean package'
+            }
+         }
+       // stage('SonarQube analysis') {
+//    def scannerHome = tool 'SonarScanner 4.0';
+       // steps{
+        // withSonarQubeEnv('SonarQube') { 
+        // If you have configured more than one global server connection, you can specify its name
+//      sh "${scannerHome}/bin/sonar-scanner"
+        // bat "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=Laptop1@"
+    }
+        }
+        }
+       
+    }
+  }
