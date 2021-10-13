@@ -4,15 +4,21 @@ pipeline{
         PATH = "C:/Program Files/Apache maven-3.8.2/bin: $PATH"
     }
     stages{
-       // stage('GetCode')
-            // steps{
-               // git 'https://github.com/Spraveensakthi/DevOps.git'   
+        stage('GetCode')
+             steps{
+                git 'https://github.com/Spraveensakthi/DevOps.git'   
     
        stage('Build'){
             steps{
                 bat 'mvn clean package'
             }
          }
+         stage('Deploy'){
+            steps{
+            java -jar demo-0.0.1-SNAPSHOT.jar
+            }
+            }
+            
        // stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
        // steps{
