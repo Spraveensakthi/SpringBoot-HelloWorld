@@ -12,7 +12,7 @@ pipeline{
          }
          stage('Deploy'){
             steps{
-            bat 'javaw -jar target/demo-0.0.1-SNAPSHOT.jar &'
+            bat 'nohup javaw -jar target/demo-0.0.1-SNAPSHOT.jar &'
             }
         }
             
