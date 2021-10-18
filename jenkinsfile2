@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    environment {
+        PATH = "C:/Program Files/Apache maven-3.8.2/bin: $PATH"
+           }
+    stages{
+            
+            stage('Deploy'){
+            steps{
+            bat 'javaw -jar target/demo-0.0.1-SNAPSHOT.jar'
+            }
+        }
+            
+        }
+  }
