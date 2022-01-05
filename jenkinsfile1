@@ -11,13 +11,11 @@ pipeline{
             }
          }
          // Lint with MegaLinter: https://megalinter.github.io/
-       stage('MegaLinter') {
-           agent {
-           docker {
-            docker pull megalinter/megalinter
-            docker run -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint:/tmp/lint megalinter/megalinter
+       stage('MegaLinter'){
+           steps {
+            bat 'docker pull megalinter/megalinter'
+            bat 'docker run -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint:/tmp/lint megalinter/megalinter'
         }
-    }
     }
     }
     }
