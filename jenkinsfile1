@@ -14,14 +14,10 @@ pipeline{
        stage('MegaLinter') {
            agent {
            docker {
-            image 'megalinter/megalinter'
-            args "-u root -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
-            reuseNode true
+            docker pull megalinter/megalinter
+            docker run -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint:/tmp/lint megalinter/megalinter
         }
     }
-    steps {
-        sh '/entrypoint.sh'
     }
-       }
     }
     }
