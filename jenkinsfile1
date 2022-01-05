@@ -14,7 +14,7 @@ pipeline{
        stage('MegaLinter') {
            agent {
            docker {
-            image 'megalinter/megalinter:v5'
+            image 'megalinter/megalinter'
             args "-u root -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
