@@ -12,8 +12,8 @@ pipeline{
          }
          // Lint with MegaLinter: https://megalinter.github.io/
        stage('MegaLinter') {
-     agent {
-        docker {
+           agent {
+           docker {
             image 'megalinter/megalinter:v5'
             args "-u root -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
@@ -22,6 +22,6 @@ pipeline{
     steps {
         sh '/entrypoint.sh'
     }
-}   
-        }
-  }
+       }
+    }
+    }
