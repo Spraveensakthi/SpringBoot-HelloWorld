@@ -14,8 +14,7 @@ pipeline{
        stage('MegaLinter'){
            steps {
              bat 'docker pull megalinter/megalinter'
-             echo $WORKSPACE
-             
+            
         }
     }
     }
