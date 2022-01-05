@@ -10,11 +10,18 @@ pipeline{
                 bat 'mvn clean package'
             }
          }
-         stage('Deploy'){
-            steps{
-            bat "javaw -jar target/demo-0.0.1-SNAPSHOT.jar"
-            }
+         // Lint with MegaLinter: https://megalinter.github.io/
+       stage('MegaLinter') {
+     agent {
+        docker {
+            image 'megalinter/megalinter:v5'
+            args "-u root -e "VALIDATE_ALL_CODEBASE=true" -e "FILEIO_REPORTER=true" -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            reuseNode true
         }
-            
+    }
+    steps {
+        sh '/entrypoint.sh'
+    }
+}   
         }
   }
